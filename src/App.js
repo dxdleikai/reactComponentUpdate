@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Two from './Two';
+import TwoBrother from './TwoBrother';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    app_number: 1
+  }
+  appNumberAdd = () => {
+    this.setState({
+      app_number: this.state.app_number + 1
+    });
+  }
+  componentDidUpdate() {
+    console.log('component app update');
+  }
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h4>APP</h4>
+          <p>
+             app_number = [{this.state.app_number}]<button onClick={this.appNumberAdd}>app_state_number + 1</button>
+          </p>
+          <div className="two">
+              <h4>APP的子组件</h4>
+              <TwoBrother></TwoBrother>
+              <Two appStateNumber={this.state.app_number}></Two>
+          </div>
+        </header>
+      </div>
+    )
+  }
 }
 
 export default App;
