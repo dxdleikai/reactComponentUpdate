@@ -12,6 +12,9 @@ class App extends React.Component {
       app_number: this.state.app_number + 1
     });
   }
+  updateName(arg) {
+    console.log(arg);
+  }
   componentDidUpdate() {
     console.log('component app update');
   }
@@ -21,12 +24,13 @@ class App extends React.Component {
         <header className="App-header">
           <h4>APP</h4>
           <p>
-             app_number = [{this.state.app_number}]<button onClick={this.appNumberAdd}>app_state_number + 1</button>
+             app_number = [{this.state.app_number}]
+             <button onClick={this.appNumberAdd}>app_state_number + 1</button>
           </p>
           <div className="two">
               <h4>APP的子组件</h4>
               <TwoBrother></TwoBrother>
-              <Two appStateNumber={this.state.app_number}></Two>
+              <Two appStateNumber={this.state.app_number} onUpdateName={this.updateName}></Two>
           </div>
         </header>
       </div>

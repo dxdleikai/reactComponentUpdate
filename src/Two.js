@@ -11,12 +11,16 @@ class Two extends React.Component {
             two_number: this.state.two_number + 1
         });
       }
+      emitName = () => {
+          this.props.onUpdateName('leikai');
+      }
       componentDidUpdate() {
         console.log('compoent two update');
       }
     render() {
         return (
             <div>
+                <p>props:{this.props.appStateNumber} <button onClick={this.emitName}>emitName</button></p>
                 <p>
                 组件Two。two_number = [{this.state.two_number}] <button onClick={this.twoNumberAdd}>two_state_number + 1</button>
             </p>
